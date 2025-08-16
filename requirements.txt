@@ -5,6 +5,7 @@ openai-whisper
 gTTS
 playsound
 pyttsx3 # for multiple voices 
+TTS
 
 # Audio recording & processing
 sounddevice
