@@ -1,19 +1,23 @@
-import whisper 
+import sounddevice as sd
 import numpy as np
-import sounddevice as sd 
+import whisper
 import ollama
-import tempfile 
-import playsound 
-from gtts import gTTS
+import tempfile
+import os, platform
+from TTS.api import TTS
+from playsound import playsound
+
 
 model = whisper.load_model("turbo")
+
+tts_model = TTS("tts_models/en/vctk/vits")  # multi-speaker English voices
 
 # ----------------
 # Record audio
 # ----------------
 
 def record_and_transcribe(duration=5, fs=16000):
-    print("🎙️ Recording your voice ... ")
+    print("🎙️ Recording your voice for next 5 seconds only ... ")
     audio = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype=np.float32)
     sd.wait()
     print("☑️ Recording Finished!")
@@ -38,12 +42,13 @@ def ask_llm(user_text):
 # Speak the Response
 # ------------------
 
-def speak(text):
-    tts = gTTS(text=text, lang="en")
-    with tempfile.NamedTemporaryFile(delete=True, suffix=".mp3") as fp:
-        tts.save(fp.name)
-        playsound.playsound(fp.name)
-    
+def speak(text, speaker):
+    print(f"Jarvis ({speaker}) 🤖 : ", {text})
+
+    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmpfile:
+        tts_model.tts_to_file(text=text, speaker=speaker, file_path=tmpfile.name)
+        playsound(tmpfile.name)
+        os.remove(tmpfile.name)  # delete after playback
     
 if __name__ == "__main__":
     user_text = record_and_transcribe()
@@ -51,13 +56,5 @@ if __name__ == "__main__":
     
     response = ask_llm(user_text)
     
-    print("Jarvis Replied 🤖 :", response)
-    
-    speak(response)
-
-    
-
-
-    
-    
-    
+    speak(response, speaker="p240")
+    # you can change voice by changing the speaker 

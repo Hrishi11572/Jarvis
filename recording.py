@@ -1,4 +1,4 @@
-# Record an audio using Python 
+# Sample Code to record an audio using Python 
 
 import sounddevice as sd
 from scipy.io.wavfile import write
