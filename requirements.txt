@@ -1,0 +1,16 @@
+# Speech-to-text
+openai-whisper
+
+# Text-to-speech
+gTTS
+playsound
+pyttsx3 # for multiple voices 
+
+# Audio recording & processing
+sounddevice
+soundfile
+numpy
+scipy
+
+# LLM backend
+ollama
