@@ -4,8 +4,8 @@ openai-whisper
 # Text-to-speech
 gTTS
 playsound
-pyttsx3 # for multiple voices 
 TTS
+edge-tts # microsoft's TTS (better)
 
 # Audio recording & processing
 sounddevice

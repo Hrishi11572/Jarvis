@@ -4,7 +4,7 @@ import time
 import whisper 
 
 
-model = whisper.load_model("small") # for modles guide refer : https://github.com/openai/whisper?tab=readme-ov-file#available-models-and-languages
+model = whisper.load_model("turbo") # for modles guide refer : https://github.com/openai/whisper?tab=readme-ov-file#available-models-and-languages
 
 
 def record_and_transcribe(
