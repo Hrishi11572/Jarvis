@@ -1,3 +1,7 @@
 # Ignore Python virtual environments
 jarvisenv/
 output.wav
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

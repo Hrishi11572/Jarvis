@@ -22,6 +22,6 @@ if __name__ == "__main__":
         print("You Said 🗣️ :  ", user_text)
         
         response = ask_llm(user_text)
-        speak(response, speaker="p234")
+        speak(response, speaker="p240")
         # you can change voice by changing the speaker 
 

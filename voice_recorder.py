@@ -4,14 +4,14 @@ import time
 import whisper 
 
 
-model = whisper.load_model("turbo")
+model = whisper.load_model("small") # for modles guide refer : https://github.com/openai/whisper?tab=readme-ov-file#available-models-and-languages
 
 
 def record_and_transcribe(
     fs=16000, 
     max_duration=60.0,
     min_duration=3.0, 
-    silence_duration=0.8,
+    silence_duration=0.5,
     block_duration=0.2, 
     noise_sample=0.5,
     sensitivity=3.0
